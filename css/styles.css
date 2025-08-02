@@ -57,6 +57,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-link:hover,
