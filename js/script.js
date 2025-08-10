@@ -203,6 +203,56 @@ function createImageModal(src, alt) {
     document.body.appendChild(modal);
 }
 
+// Hero Carousel Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+    const slideInterval = 4000; // 4 seconds
+
+    function showSlide(index) {
+        // Remove active class from all slides and indicators
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Add active class to current slide and indicator
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    // Auto-advance slides
+    let autoSlide = setInterval(nextSlide, slideInterval);
+
+    // Add click handlers to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+            // Reset auto-advance timer
+            clearInterval(autoSlide);
+            autoSlide = setInterval(nextSlide, slideInterval);
+        });
+    });
+
+    // Pause auto-advance on hover
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(nextSlide, slideInterval);
+        });
+    }
+});
+
 // Console welcome message
 console.log(`
 🎄 Welcome to the Pflugerville Nativity Display website! 🎄
