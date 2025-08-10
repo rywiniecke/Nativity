@@ -207,47 +207,57 @@ function createImageModal(src, alt) {
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
+    const slideInterval = 5000; // ms
+
+    // If there are no slides, nothing to do
+    if (slides.length === 0) return;
+
     let currentSlide = 0;
-    const slideInterval = 4000; // 4 seconds
 
     function showSlide(index) {
-        // Remove active class from all slides and indicators
+        // Normalize index to a valid slide number
+        const next = ((index % slides.length) + slides.length) % slides.length;
+
+        // Update slides
         slides.forEach(slide => slide.classList.remove('active'));
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-        
-        // Add active class to current slide and indicator
-        slides[index].classList.add('active');
-        indicators[index].classList.add('active');
-        
-        currentSlide = index;
+        slides[next].classList.add('active');
+
+        // Update indicators if present
+        if (indicators.length > 0) {
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            if (next < indicators.length) {
+                indicators[next].classList.add('active');
+            }
+        }
+
+        currentSlide = next;
     }
 
     function nextSlide() {
-        const nextIndex = (currentSlide + 1) % slides.length;
-        showSlide(nextIndex);
+        showSlide(currentSlide + 1);
     }
 
-    // Auto-advance slides
+    // Init first slide and start auto-advance
+    showSlide(0);
     let autoSlide = setInterval(nextSlide, slideInterval);
 
-    // Add click handlers to indicators
+    // Click handlers for indicators
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             showSlide(index);
-            // Reset auto-advance timer
             clearInterval(autoSlide);
             autoSlide = setInterval(nextSlide, slideInterval);
         });
     });
 
-    // Pause auto-advance on hover
+    // Pause on hover over hero
     const heroSection = document.querySelector('.hero');
     if (heroSection) {
         heroSection.addEventListener('mouseenter', () => {
             clearInterval(autoSlide);
         });
-
         heroSection.addEventListener('mouseleave', () => {
+            clearInterval(autoSlide);
             autoSlide = setInterval(nextSlide, slideInterval);
         });
     }
