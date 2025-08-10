@@ -115,7 +115,7 @@ document.addEventListener('scroll', () => {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #2c5530;
+            background: #1e3a5f;
             color: white;
             border: none;
             border-radius: 50%;
@@ -130,11 +130,11 @@ document.addEventListener('scroll', () => {
         
         scrollButton.addEventListener('click', scrollToTop);
         scrollButton.addEventListener('mouseenter', () => {
-            scrollButton.style.background = '#1a3d1e';
+            scrollButton.style.background = '#152b42';
             scrollButton.style.transform = 'scale(1.1)';
         });
         scrollButton.addEventListener('mouseleave', () => {
-            scrollButton.style.background = '#2c5530';
+            scrollButton.style.background = '#1e3a5f';
             scrollButton.style.transform = 'scale(1)';
         });
         
