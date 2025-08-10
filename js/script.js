@@ -207,18 +207,24 @@ function createImageModal(src, alt) {
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
+    if (slides.length === 0 || indicators.length === 0) {
+        return; // Exit if no carousel elements are found
+    }
     let currentSlide = 0;
-    const slideInterval = 4000; // 4 seconds
-
-    function showSlide(index) {
-        // Remove active class from all slides and indicators
-        slides.forEach(slide => slide.classList.remove('active'));
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-        
-        // Add active class to current slide and indicator
-        slides[index].classList.add('active');
-        indicators[index].classList.add('active');
-        
+        function showSlide(index) {
+            if (slides.length === 0 || indicators.length === 0 || index < 0 || index >= slides.length || index >= indicators.length) {
+                return;
+            }
+            // Remove active class from all slides and indicators
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Add active class to current slide and indicator
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+            currentSlide = index;
+        }
         currentSlide = index;
     }
 
@@ -250,6 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         heroSection.addEventListener('mouseleave', () => {
             autoSlide = setInterval(nextSlide, slideInterval);
         });
+    }
+});
     }
 });
 
