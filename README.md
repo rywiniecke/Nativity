@@ -7,7 +7,7 @@ A beautifully crafted static website for the annual Pflugerville Nativity Displa
 ## 🎄 About the Event
 
 The Pflugerville Nativity Display is a free, family-friendly Christmas celebration featuring:
-- **Dates**: December 6th & 7th, 2025 | 6:00-9:00 PM
+- **Dates**: December 5th & 6th, 2025 | 6:00-9:00 PM
 - **Location**: 700 N. Heatherwilde Blvd, Pflugerville, TX 78660
 - **Admission**: FREE for all families!
 
@@ -180,7 +180,7 @@ For website issues or suggestions, please contact the repository maintainer thro
 
 | Detail | Information |
 |--------|-------------|
-| **📅 Dates** | Friday, December 6th & Saturday, December 7th, 2025 |
+| **📅 Dates** | Friday, December 5th & Saturday, December 6th, 2025 |
 | **🕕 Time** | 6:00 PM - 9:00 PM both nights |
 | **📍 Location** | 700 N. Heatherwilde Blvd, Pflugerville, TX 78660 |
 | **💰 Admission** | **FREE** for all families! |
