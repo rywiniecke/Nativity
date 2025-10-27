@@ -379,9 +379,15 @@ body {
     text-decoration: none;
     border-radius: 30px;
     font-weight: 600;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     transition: all 0.3s ease;
     font-size: 1.1rem;
+}
+
+.social-btn svg {
+    flex-shrink: 0;
 }
 
 .social-btn:hover {
